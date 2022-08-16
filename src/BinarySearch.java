@@ -7,6 +7,7 @@ public class BinarySearch {
     int[] numArray = {5,10,15,20,25,30,35};
 
         System.out.println( search(numArray,35));
+        System.out.println(search2(0,numArray.length-1,35,numArray));
 
 
 }
@@ -26,6 +27,24 @@ public static int search(int [] array, int target){
         }
         return -1;
 }
+
+    public static int search2(int start, int end, int key, int [] array){
+
+        if (start == end){
+            if(array[start] == key) return start;
+            else return 0;
+        }
+        else {
+            int mid = (start + end) / 2;
+            if (array[mid] == key) return mid;
+            else if (array[mid] > key) {
+                search2(start, mid - 1, key, array);
+            }
+
+            return search2(mid + 1, end, key, array);
+        }
+
+    }
 }
 
 
